@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>chatterbox</title>
+
+    <!-- external javascript -->
+    <!--<script src="../bower_components/jquery/jquery.min.js"></script>
+    <script src="../bower_components/underscore/underscore-min.js"></script>-->
+
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+
+
+    <!-- internal javascript -->
+  </head>
+  <body>
+
+    <script>
+
+    var cb = function(data) {
+      // var $b = $(document.createElement('div'));
+      // $b.text(data);
+      // $(document.body).append($b);
+      console.log(data);
+    }
+
+    $.ajax({
+      url : 'http://localhost:8080/1/classes/messages',
+      type : 'POST',
+      data : '{"name":"name"}',
+      contentType : 'application/json',
+      success : function(data) {
+        // cb(data);
+      }
+    });
+
+    $.ajax({
+    url : 'http://localhost:8080/1/classes/messages',
+    type : 'GET',
+    data : {
+      order: "-createdAt",
+      limit: 200
+    },
+    success : function(data) {
+      debugger;
+      cb(data);
+    }
+  });
+    </script>
+  </body>
+</html>
